@@ -594,7 +594,7 @@ var device = null;
         });
 
 
-        /*firmwareFileField.addEventListener("change", function() {
+        firmwareFileField.addEventListener("change", function() {
             firmwareFile = null;
             if (firmwareFileField.files.length > 0) {
                 let file = firmwareFileField.files[0];
@@ -605,7 +605,7 @@ var device = null;
                 reader.readAsArrayBuffer(file);
                 console.log(firmwareFile);
             }
-        });*/
+        });
 
         downloadButton.addEventListener('click', async function(event) {
             event.preventDefault();
