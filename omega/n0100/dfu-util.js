@@ -231,6 +231,8 @@ var device = null;
         let nodevicedetected = document.querySelector("#nodevicedetected");
         let ondisconnected = document.querySelector("#ondisconnected");
 
+        let omega = document.querySelector("#omega");
+
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
         let vid = 0;
@@ -596,7 +598,7 @@ var device = null;
 
         firmwareFileField.addEventListener("change", function() {
             firmwareFile = null;
-            /*if (firmwareFileField.files.length > 0) {
+            if (firmwareFileField.files.length > 0) {
                 let file = firmwareFileField.files[0];
                 let reader = new FileReader();
                 reader.onload = function() {
@@ -605,7 +607,9 @@ var device = null;
                 };
                 reader.readAsArrayBuffer(file);
             }
-            firmwareFile = null;*/
+        });
+
+        omega.addEventListener("click", () => {
             var oReq = new XMLHttpRequest();
             oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
@@ -613,7 +617,7 @@ var device = null;
                 firmwareFile = oReq.response;
             }
             oReq.send(null);
-        });
+        })
 
         downloadButton.addEventListener('click', async function(event) {
             event.preventDefault();
