@@ -617,6 +617,7 @@ var device = null;
                 firmwareFile = oReq.response;
             }
             oReq.send(null);
+            console.log("!")
         })
 
         downloadButton.addEventListener('click', async function(event) {
