@@ -595,8 +595,7 @@ var device = null;
                     firmwareFile = reader.result;
                 };
                 reader.readAsArrayBuffer(file);
-                console.log(reader);
-                console.log(typeof reader);
+                console.log(firmwareFile);
             }
         });
 
