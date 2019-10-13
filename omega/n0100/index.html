@@ -7,21 +7,6 @@
     <script src="dfuse.js"></script>
     <script src="FileSaver.js"></script>
     <script src="dfu-util.js"></script>
-    <style>
-      p.warning {
-        color: red;
-      }
-      p.error {
-        color: red;
-        font-weight: bold;
-      }
-      label.radio {
-        display: inline;
-      }
-      input:invalid {
-        color:red;
-      }
-    </style>
   </head>
   <body>
     <p>
@@ -64,14 +49,17 @@
       
         <legend style="display: none;">DFU mode</legend>
         <fieldset>
-          <legend>Flash firmware onto device</legend>
-          <p>
-            <input type="file" id="firmwareFile" name="file" disabled="true"/>
-          </p>
-          <p>
-            <button id="download" disabled="true">Flash</button>
-          </p>
+          <div class="formgroup">
+
+            <p>
+              <input type="file" id="firmwareFile" name="file" disabled="true"/>
+            </p>
+            <p>
+              <button id="download" class="btn btn-primary" disabled="true">Flash</button>
+            </p>
           <div class="log" id="downloadLog"></div>
+          </div>
+
         </fieldset>
       </form>
     </fieldset>

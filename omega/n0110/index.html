@@ -7,26 +7,14 @@
     <script src="dfuse.js"></script>
     <script src="FileSaver.js"></script>
     <script src="dfu-util.js"></script>
-    <style>
-      p.warning {
-        color: red;
-      }
-      p.error {
-        color: red;
-        font-weight: bold;
-      }
-      label.radio {
-        display: inline;
-      }
-      input:invalid {
-        color:red;
-      }
-    </style>
   </head>
   <body>
-    <p>
-      <span id="status"></span>
-    </p>
+    <div class="alert alert-error">
+      <p>
+        <span id="status"></span>
+      </p>
+    </div>
+
     <p style="display: none;">
       <label for="vid">Vendor ID (hex):</label>
       <input type="text" name="vid" id="vid" maxlength="6" size="8" pattern="0x[A-Fa-f0-9]{1,4}"/>
@@ -74,14 +62,6 @@
             <button id="download_external" disabled="true">Flash external</button>
           </p>
           <div class="log" id="downloadLog"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Dump flash from device</legend>
-          <p>
-            <button id="upload_internal" disabled="true">Dump internal</button>
-            <button id="upload_external" disabled="true">Dump external</button>
-          </p>
-          <div class="log" id="uploadLog"></div>
         </fieldset>
       </form>
     </fieldset>
