@@ -609,7 +609,7 @@ var device = null;
             oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
             oReq.onload = (oEvent) => {
-                console.log(new Uint8Array(oReq.response));
+                console.log(oReq.response);
             }
             oReq.send(null);
         });
