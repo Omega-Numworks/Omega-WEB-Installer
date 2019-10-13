@@ -73,17 +73,21 @@
         <legend style="display: none;">DFU mode</legend>
         <fieldset>
           <div class="formgroup">
-              <div class="btn btn-primary btn-sm float-left">
+              <!--<div class="btn btn-primary btn-sm float-left">
                 <span>Choose file</span>
                 <input type="file">
-              </div>
+              </div>-->
+              <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="hFichier" name="hFichier" lang="fr" accept=".jpg,.jpeg,.gif,.png" />
+                  <label class="custom-file-label" for="hFichier">Sélectionner un fichier</label>
+                </div>
+                
               <!--<input type="file" id="firmwareFile" name="file" disabled="true"/>-->
             <p>
               <button id="download" class="btn btn-primary" disabled="true">Flash</button>
             </p>
           <div class="log" id="downloadLog"></div>
           </div>
-
         </fieldset>
       </form>
     </fieldset>
