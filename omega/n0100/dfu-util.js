@@ -320,6 +320,7 @@ var device = null;
             detachButton.disabled = true;
             downloadButton.disabled = true;
             firmwareFileField.disabled = true;
+            omega.disabled = true;
         }
 
         function onUnexpectedDisconnect(event) {
@@ -425,11 +426,13 @@ var device = null;
                 detachButton.disabled = false;
                 downloadButton.disabled = true;
                 firmwareFileField.disabled = true;
+                omega.disabled = true;
             } else {
                 // DFU
                 detachButton.disabled = true;
                 downloadButton.disabled = false;
                 firmwareFileField.disabled = false;
+                omega.disabled = false;
             }
 
             if (device.memoryInfo) {
@@ -617,7 +620,6 @@ var device = null;
                 firmwareFile = oReq.response;
             }
             oReq.send(null);
-            console.log("!")
         })
 
         downloadButton.addEventListener('click', async function(event) {
