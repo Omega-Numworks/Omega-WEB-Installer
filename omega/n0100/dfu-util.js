@@ -410,7 +410,7 @@ var device = null;
                 "Serial: " + device.device_.serialNumber + "\n"
             );
 
-            Name.textContent = device.device_.productName;
+            Name.textContent = (device.device_.productName);
 
             // Display basic dfu-util style info
             dfuDisplay.textContent = formatDFUSummary(device) + "\n" + memorySummary;
