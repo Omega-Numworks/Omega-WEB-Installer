@@ -216,6 +216,7 @@ var device = null;
     }
 
     document.addEventListener('DOMContentLoaded', event => {
+        let oReq = new XMLHttpRequest();
         let connectButton = document.querySelector("#connect");
         let detachButton = document.querySelector("#detach");
         let downloadButton = document.querySelector("#download");
@@ -228,6 +229,8 @@ var device = null;
         let interfaceForm = document.querySelector("#interfaceForm");
         let nowebusb = document.querySelector("#nowebusb");
         let nodevicedetected = document.querySelector("#nodevicedetected");
+        let ondisconnected = document.querySelector("#ondisconnected");
+
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -295,7 +298,6 @@ var device = null;
         let transferSize = parseInt(transferSizeField.value);
 
         let dfuseStartAddressField = document.querySelector("#dfuseStartAddress");
-        let firmwareFileField = document.querySelector("#firmwareFile");
         let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
@@ -306,7 +308,8 @@ var device = null;
 
         function onDisconnect(reason) {
             if (reason) {
-                statusDisplay.textContent = reason;
+                //statusDisplay.textContent = reason;
+                ondisconnected.innerHTML = reason
             }
 
             connectButton.textContent = "Connect";
@@ -591,7 +594,7 @@ var device = null;
         });
 
 
-        firmwareFileField.addEventListener("change", function() {
+        /*firmwareFileField.addEventListener("change", function() {
             firmwareFile = null;
             if (firmwareFileField.files.length > 0) {
                 let file = firmwareFileField.files[0];
@@ -602,9 +605,10 @@ var device = null;
                 reader.readAsArrayBuffer(file);
                 console.log(firmwareFile);
             }
-        });
+        });*/
 
-        downloadButton.addEventListener('click', async function(event) {
+
+        async function download(event, firmwareFile){
             event.preventDefault();
             event.stopPropagation();
             if (!configForm.checkValidity()) {
@@ -648,6 +652,14 @@ var device = null;
             }
 
             //return false;
+        }
+
+        downloadButton.addEventListener('click', async function(event) {
+            oReq.open("GET", "omega1.8.bin", true);
+            oReq.responseType = "arraybuffer";
+            oReq.onload = function (oEvent) {
+                downlad(event, oReq.response);
+            }
         });
 
         // Check if WebUSB is available
