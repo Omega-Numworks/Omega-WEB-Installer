@@ -422,12 +422,12 @@ var device = null;
                 // Runtime
                 detachButton.disabled = false;
                 downloadButton.disabled = true;
-                firmwareFileField.disabled = true;
+                //firmwareFileField.disabled = true;
             } else {
                 // DFU
                 detachButton.disabled = true;
                 downloadButton.disabled = false;
-                firmwareFileField.disabled = false;
+                //firmwareFileField.disabled = false;
             }
 
             if (device.memoryInfo) {
