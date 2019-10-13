@@ -221,6 +221,7 @@ var device = null;
         let downloadButton = document.querySelector("#download");
         let statusDisplay = document.querySelector("#status");
         let infoDisplay = document.querySelector("#usbInfo");
+        let Name = document.querySelector('#Name')
         let dfuDisplay = document.querySelector("#dfuInfo");
         let vidField = document.querySelector("#vid");
         let pidField = document.querySelector("#pid");
@@ -408,6 +409,8 @@ var device = null;
                 "MFG: " + device.device_.manufacturerName + "\n" +
                 "Serial: " + device.device_.serialNumber + "\n"
             );
+
+            Name.textContent = device.device_.productName;
 
             // Display basic dfu-util style info
             dfuDisplay.textContent = formatDFUSummary(device) + "\n" + memorySummary;

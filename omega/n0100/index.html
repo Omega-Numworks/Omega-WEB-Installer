@@ -30,6 +30,10 @@
     </dialog>
     <p>
       <div id="usbInfo" style="white-space: pre"></div>
+
+      <ul class="list-group">
+          <li class="list-group-item" id="Name"></li>
+        </ul>
       <div id="dfuInfo" style="white-space: pre; display: none;"></div>
     </p>
     <fieldset style="display: none">
@@ -67,7 +71,6 @@
     </fieldset>
     <br/>
     <div class="jumbotron">
-      <hr>
       <p>WebUSB is currently only supported by Chromium / Google Chrome.</p>
       <p>For Chrome to communicate with a USB device, it must have permission to access the device and the operating system must be able to load a generic driver that libusb can talk to.</p>
       <p>
