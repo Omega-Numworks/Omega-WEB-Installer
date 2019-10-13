@@ -602,6 +602,7 @@ var device = null;
                 let reader = new FileReader();
                 reader.onload = function() {
                     firmwareFile = reader.result;
+                    console.log(reader.result);
                 };
                 reader.readAsArrayBuffer(file);
             }
