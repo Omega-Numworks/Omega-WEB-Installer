@@ -609,14 +609,14 @@ var device = null;
         });
 
         latestversion.addEventListener('click', async () => {
-            var oReq = new XMLHttpRequest();
+            /*var oReq = new XMLHttpRequest();
             oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
 
             oReq.onload = function (oEvent) {
                 firmwareFile = oReq.response;
             }
-            oReq.send(null);
+            oReq.send(null);*/
         })
 
         downloadButton.addEventListener('click', async function(event) {
