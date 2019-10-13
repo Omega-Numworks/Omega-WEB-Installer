@@ -230,6 +230,7 @@ var device = null;
         let nowebusb = document.querySelector("#nowebusb");
         let nodevicedetected = document.querySelector("#nodevicedetected");
         let ondisconnected = document.querySelector("#ondisconnected");
+        let latestversion = document.querySelector("#latestversion");
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -606,15 +607,18 @@ var device = null;
                 console.log(firmwareFile);
             }
             console.log(firmwareFile);
+        });
+
+        latestversion.addEventListener('click', async () => {
             var oReq = new XMLHttpRequest();
             oReq.open("GET", "/myfile.png", true);
             oReq.responseType = "arraybuffer";
 
             oReq.onload = function (oEvent) {
-                console.log(oReq.response);
+                firmwareFile = oReq.response;
             }
             oReq.send(null);
-        });
+        })
 
         downloadButton.addEventListener('click', async function(event) {
             event.preventDefault();
