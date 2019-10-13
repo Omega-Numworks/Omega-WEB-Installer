@@ -605,7 +605,6 @@ var device = null;
                 };
                 reader.readAsArrayBuffer(file);
             }
-            console.log(file);
         });
 
         latestversion.addEventListener('click', async () => {
@@ -616,7 +615,9 @@ var device = null;
             oReq.onload = function (oEvent) {
                 firmwareFile = oReq.response;
             }
-            oReq.send(null);*/
+            oReq.send(null);
+            console.log(firmwareFile)
+            */
         })
 
         downloadButton.addEventListener('click', async function(event) {
