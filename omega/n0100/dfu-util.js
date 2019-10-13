@@ -221,13 +221,11 @@ var device = null;
         let downloadButton = document.querySelector("#download");
         let statusDisplay = document.querySelector("#status");
         let infoDisplay = document.querySelector("#usbInfo");
-        let Name = document.querySelector('#Name')
         let dfuDisplay = document.querySelector("#dfuInfo");
         let vidField = document.querySelector("#vid");
         let pidField = document.querySelector("#pid");
         let interfaceDialog = document.querySelector("#interfaceDialog");
         let interfaceForm = document.querySelector("#interfaceForm");
-        let interfaceSelectButton = document.querySelector("#selectInterface");
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -406,7 +404,6 @@ var device = null;
             connectButton.textContent = 'Disconnect';
             infoDisplay.textContent = (
                 "Name: " + device.device_.productName + "\n" +
-                "MFG: " + device.device_.manufacturerName + "\n" +
                 "Serial: " + device.device_.serialNumber + "\n"
             );
 
@@ -598,6 +595,8 @@ var device = null;
                     firmwareFile = reader.result;
                 };
                 reader.readAsArrayBuffer(file);
+                console.log(reader);
+                console.log(typeof reader);
             }
         });
 
