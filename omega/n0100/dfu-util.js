@@ -605,13 +605,13 @@ var device = null;
                 };
                 reader.readAsArrayBuffer(file);
             }
-        });
-
-        downloadButton.addEventListener('click', async function(event) {
             function ab2str(buf) {
                 return String.fromCharCode.apply(null, new Uint16Array(buf));
               }
               ab2str(firmwareFile);
+        });
+
+        downloadButton.addEventListener('click', async function(event) {
             event.preventDefault();
             event.stopPropagation();
             if (!configForm.checkValidity()) {
