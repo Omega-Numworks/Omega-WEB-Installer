@@ -7,16 +7,26 @@
     <script src="dfuse.js"></script>
     <script src="FileSaver.js"></script>
     <script src="dfu-util.js"></script>
+    <style>
+      body{
+        background-color: #95a9c9;
+      }
+    </style>
   </head>
   <body>
-    <p>
-      <span id="status"></span>
-    </p>
 
     <div class="alert alert-danger" style="display: none;" id="nowebusb" role="alert">
         Your browser doesn't support webusb, which is needed for omega updating.<br>
         Download chromium, chrome or brave for updating omega !
     </div>
+
+    <div class="alert alert-warning" style="display: none;" id="nodevicedetected" role="alert">
+      No device detected
+    </div>
+
+    <p>
+        <span id="status"></span>
+      </p>
 
     <p style="display: none;">
       <label for="vid">Vendor ID (hex):</label>

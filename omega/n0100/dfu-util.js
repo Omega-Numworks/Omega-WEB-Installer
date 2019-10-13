@@ -227,6 +227,7 @@ var device = null;
         let interfaceDialog = document.querySelector("#interfaceDialog");
         let interfaceForm = document.querySelector("#interfaceForm");
         let nowebusb = document.querySelector("#nowebusb");
+        let nodevicedetected = document.querySelector("#nodevicedetected");
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -402,6 +403,8 @@ var device = null;
 
             // Display basic USB information
             statusDisplay.textContent = '';
+            nodevicedetected.style.display = "none";
+            
             connectButton.textContent = 'Disconnect';
             infoDisplay.textContent = (
                 "Name: " + device.device_.productName + "\n" +
@@ -465,7 +468,8 @@ var device = null;
                     }
 
                     if (matching_devices.length == 0) {
-                        statusDisplay.textContent = 'No device found.';
+                        nodevicedetected.style.display = "block";
+                        //statusDisplay.textContent = 'No device found.';
                     } else {
                         if (matching_devices.length == 1 || isNumWorks) { // For NumWorks, we want interface 0 ("Internal Flash")
                             statusDisplay.textContent = 'Connecting...';
