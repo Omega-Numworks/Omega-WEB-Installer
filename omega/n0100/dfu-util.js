@@ -230,7 +230,6 @@ var device = null;
         let nowebusb = document.querySelector("#nowebusb");
         let nodevicedetected = document.querySelector("#nodevicedetected");
         let ondisconnected = document.querySelector("#ondisconnected");
-        downloadButton.disabled = false;
 
 
         let searchParams = new URLSearchParams(window.location.search);
@@ -318,6 +317,7 @@ var device = null;
             dfuDisplay.textContent = "";
             detachButton.disabled = true;
             downloadButton.disabled = true;
+            firmwareFileField.disabled = true;
         }
 
         function onUnexpectedDisconnect(event) {
@@ -422,12 +422,12 @@ var device = null;
                 // Runtime
                 detachButton.disabled = false;
                 downloadButton.disabled = true;
-                //firmwareFileField.disabled = true;
+                firmwareFileField.disabled = true;
             } else {
                 // DFU
                 detachButton.disabled = true;
                 downloadButton.disabled = false;
-                //firmwareFileField.disabled = false;
+                firmwareFileField.disabled = false;
             }
 
             if (device.memoryInfo) {
@@ -607,8 +607,7 @@ var device = null;
             }
         });*/
 
-
-        async function download(event, firmwareFile){
+        downloadButton.addEventListener('click', async function(event) {
             event.preventDefault();
             event.stopPropagation();
             if (!configForm.checkValidity()) {
@@ -652,15 +651,6 @@ var device = null;
             }
 
             //return false;
-        }
-
-        downloadButton.addEventListener('click', async function(event) {
-            oReq.open("GET", "omega1.8.bin", true);
-            oReq.responseType = "arraybuffer";
-            oReq.onload = function (oEvent) {
-                console.log(oReq.response)
-                //downlad(event, oReq.response);
-            }
         });
 
         // Check if WebUSB is available
