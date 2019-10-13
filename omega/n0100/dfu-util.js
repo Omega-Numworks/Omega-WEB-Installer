@@ -423,7 +423,6 @@ var device = null;
                 detachButton.disabled = false;
                 downloadButton.disabled = true;
                 firmwareFileField.disabled = true;
-                console.log("!");
             } else {
                 // DFU
                 detachButton.disabled = true;
