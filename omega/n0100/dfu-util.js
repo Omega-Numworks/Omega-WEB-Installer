@@ -297,7 +297,7 @@ var device = null;
         let transferSize = parseInt(transferSizeField.value);
 
         let dfuseStartAddressField = document.querySelector("#dfuseStartAddress");
-        let Omegaonedoteight = document.querySelector("#Omegaonedoteight");
+        let firmwareFileField = document.querySelector("#firmwareFile");
         let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
@@ -317,7 +317,7 @@ var device = null;
             dfuDisplay.textContent = "";
             detachButton.disabled = true;
             downloadButton.disabled = true;
-            Omegaonedoteight.disabled = true;
+            firmwareFileField.disabled = true;
         }
 
         function onUnexpectedDisconnect(event) {
@@ -422,12 +422,12 @@ var device = null;
                 // Runtime
                 detachButton.disabled = false;
                 downloadButton.disabled = true;
-                Omegaonedoteight.disabled = true;
+                firmwareFileField.disabled = true;
             } else {
                 // DFU
                 detachButton.disabled = true;
                 downloadButton.disabled = false;
-                Omegaonedoteight.disabled = false;
+                firmwareFileField.disabled = false;
             }
 
             if (device.memoryInfo) {
@@ -594,10 +594,10 @@ var device = null;
         });
 
 
-        Omegaonedoteight.addEventListener("click", function() {Omegaonedoteight
+        firmwareFileField.addEventListener("change", function() {
             firmwareFile = null;
-            /*if (Omegaonedoteight.files.length > 0) {
-                let file = Omegaonedoteight.files[0];
+            /*if (firmwareFileField.files.length > 0) {
+                let file = firmwareFileField.files[0];
                 let reader = new FileReader();
                 reader.onload = function() {
                     firmwareFile = reader.result;
