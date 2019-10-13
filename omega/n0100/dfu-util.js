@@ -226,6 +226,7 @@ var device = null;
         let pidField = document.querySelector("#pid");
         let interfaceDialog = document.querySelector("#interfaceDialog");
         let interfaceForm = document.querySelector("#interfaceForm");
+        let nowebusb = document.querySelector("#nowebusb");
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -653,7 +654,7 @@ var device = null;
                 autoConnect(vid, pid, serial);
             }
         } else {
-            statusDisplay.textContent = 'WebUSB not available.'
+            nowebusb.style.display = "block";
             connectButton.disabled = true;
         }
     });

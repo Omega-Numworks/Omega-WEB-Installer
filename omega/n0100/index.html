@@ -12,6 +12,12 @@
     <p>
       <span id="status"></span>
     </p>
+
+    <div class="alert alert-error" style="display: none;" id="nowebusb" role="alert">
+        Your browser doesn't support webusb, which is needed for omega updating.<br>
+        Download chromium, chrome or brave for updating omega !
+    </div>
+
     <p style="display: none;">
       <label for="vid">Vendor ID (hex):</label>
       <input type="text" name="vid" id="vid" maxlength="6" size="8" pattern="0x[A-Fa-f0-9]{1,4}"/>
@@ -19,7 +25,7 @@
       <input type="text" name="pid" id="pid" maxlength="6" size="8" pattern="0x[A-Fa-f0-9]{1,4}"/>
     </p>
     <p style="text-align: center;">
-      Plug in your NumWorks calculator and press its reset button, then click here:<br>
+      Plug in your NumWorks calculator and press its reset button with 4, then click here:<br>
       <button id="connect" class="btn btn-primary">Connect to NumWorks calculator</button>
     </p>
     <dialog id="interfaceDialog">
@@ -65,17 +71,5 @@
         </fieldset>
       </form>
     </fieldset>
-    <br/>
-    <div class="jumbotron">
-      <p>WebUSB is currently only supported by Chromium / Google Chrome.</p>
-      <p>For Chrome to communicate with a USB device, it must have permission to access the device and the operating system must be able to load a generic driver that libusb can talk to.</p>
-      <p>
-        <ul>
-          <li>On Windows, that means that an appropriate WinUSB/libusb driver must first be installed. This can be done manually with programs such as <a href="https://zadig.akeo.ie/">Zadig</a>.</li>
-          <li>On Linux, that means that the current user must have permission to access the device.</li>
-          <li>On macOS and ChromeBooks, it should work directly.</li>
-        </ul>
-      </p>
-    </div>
   </body>
 </html>
