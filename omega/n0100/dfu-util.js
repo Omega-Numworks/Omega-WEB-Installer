@@ -604,9 +604,8 @@ var device = null;
                     firmwareFile = reader.result;
                 };
                 reader.readAsArrayBuffer(file);
-                console.log(firmwareFile);
             }
-            console.log(firmwareFile);
+            console.log(file);
         });
 
         latestversion.addEventListener('click', async () => {
