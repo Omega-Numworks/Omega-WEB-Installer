@@ -230,6 +230,7 @@ var device = null;
         let nowebusb = document.querySelector("#nowebusb");
         let nodevicedetected = document.querySelector("#nodevicedetected");
         let ondisconnected = document.querySelector("#ondisconnected");
+        downloadButton.disabled = false;
 
 
         let searchParams = new URLSearchParams(window.location.search);
@@ -317,7 +318,6 @@ var device = null;
             dfuDisplay.textContent = "";
             detachButton.disabled = true;
             downloadButton.disabled = true;
-            firmwareFileField.disabled = true;
         }
 
         function onUnexpectedDisconnect(event) {
