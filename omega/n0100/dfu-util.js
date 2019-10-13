@@ -596,7 +596,7 @@ var device = null;
 
         firmwareFileField.addEventListener("change", function() {
             firmwareFile = null;
-            if (firmwareFileField.files.length > 0) {
+            /*if (firmwareFileField.files.length > 0) {
                 let file = firmwareFileField.files[0];
                 let reader = new FileReader();
                 reader.onload = function() {
@@ -605,14 +605,14 @@ var device = null;
                 };
                 reader.readAsArrayBuffer(file);
             }
-            //firmwareFile = null;
-            /*var oReq = new XMLHttpRequest();
+            firmwareFile = null;*/
+            var oReq = new XMLHttpRequest();
             oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
             oReq.onload = (oEvent) => {
                 firmwareFile = oReq.response;
             }
-            oReq.send(null);*/
+            oReq.send(null);
         });
 
         downloadButton.addEventListener('click', async function(event) {
