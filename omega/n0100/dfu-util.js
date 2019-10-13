@@ -611,7 +611,7 @@ var device = null;
 
         latestversion.addEventListener('click', async () => {
             var oReq = new XMLHttpRequest();
-            oReq.open("GET", "/myfile.png", true);
+            oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
 
             oReq.onload = function (oEvent) {
