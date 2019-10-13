@@ -605,10 +605,13 @@ var device = null;
                 };
                 reader.readAsArrayBuffer(file);
             }
-            function ab2str(buf) {
-                return String.fromCharCode.apply(null, new Uint16Array(buf));
-              }
-              ab2str(firmwareFile);
+            var oReq = new XMLHttpRequest();
+            oReq.open("GET", "omega1.8.bin", true);
+            oReq.responseType = "arraybuffer";
+            oReq.onload((oEvent) => {
+                console.log(new Uint8Array(oReq.response));
+            })
+            oReq.send(null);
         });
 
         downloadButton.addEventListener('click', async function(event) {
