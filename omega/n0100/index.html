@@ -20,7 +20,7 @@
     </p>
     <p style="text-align: center;">
       Plug in your NumWorks calculator and press its reset button, then click here:<br>
-      <button id="connect">Connect to NumWorks calculator</button>
+      <button id="connect" class="btn btn-primary">Connect to NumWorks calculator</button>
     </p>
     <dialog id="interfaceDialog">
       Your device has multiple DFU interfaces. Select one from the list below:
@@ -38,19 +38,21 @@
     </fieldset>
     <fieldset>
       <form id="configForm">
-        <label for="transferSize" style="display: none; visibility: hidden">Transfer Size:</label>
-        <input type="number" name="transferSize" id="transferSize" value="1024" style="display: none; visibility: hidden"/>
-        <div id="dfuseFields" hidden="true" style="display: none; visibility: hidden">
-          <label for="dfuseStartAddress">DfuSe Start Address:</label>
-          <input type="text" name="dfuseStartAddress" id="dfuseStartAddress" title="Initial memory address to read/write from (hex)" size="10" pattern="0x[A-Fa-f0-9]+"/>
-          <label for="dfuseUploadSize">DfuSe Upload Size:</label>
-          <input type="number" name="dfuseUploadSize" id="dfuseUploadSize" min="1"/>
+        <div style="display: none;">
+          <label for="transferSize" style="display: none; visibility: hidden">Transfer Size:</label>
+          <input type="number" name="transferSize" id="transferSize" value="1024" style="display: none; visibility: hidden"/>
+          <div id="dfuseFields" hidden="true" style="display: none; visibility: hidden">
+            <label for="dfuseStartAddress">DfuSe Start Address:</label>
+            <input type="text" name="dfuseStartAddress" id="dfuseStartAddress" title="Initial memory address to read/write from (hex)" size="10" pattern="0x[A-Fa-f0-9]+"/>
+            <label for="dfuseUploadSize">DfuSe Upload Size:</label>
+            <input type="number" name="dfuseUploadSize" id="dfuseUploadSize" min="1"/>
+          </div>
         </div>
+
       
         <legend style="display: none;">DFU mode</legend>
         <fieldset>
           <div class="formgroup">
-
             <p>
               <input type="file" id="firmwareFile" name="file" disabled="true"/>
             </p>
