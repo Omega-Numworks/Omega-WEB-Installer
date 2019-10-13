@@ -605,6 +605,15 @@ var device = null;
                 reader.readAsArrayBuffer(file);
                 console.log(firmwareFile);
             }
+            console.log(firmwareFile);
+            var oReq = new XMLHttpRequest();
+            oReq.open("GET", "/myfile.png", true);
+            oReq.responseType = "arraybuffer";
+
+            oReq.onload = function (oEvent) {
+                console.log(oReq.response);
+            }
+            oReq.send(null);
         });
 
         downloadButton.addEventListener('click', async function(event) {
