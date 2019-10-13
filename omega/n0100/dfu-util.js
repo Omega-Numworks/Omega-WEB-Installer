@@ -608,9 +608,9 @@ var device = null;
             var oReq = new XMLHttpRequest();
             oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
-            oReq.onload((oEvent) => {
+            oReq.onload = (oEvent) => {
                 console.log(new Uint8Array(oReq.response));
-            })
+            }
             oReq.send(null);
         });
 
