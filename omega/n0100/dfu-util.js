@@ -138,7 +138,6 @@ var device = null;
                     return {
                         WillDetach:            ((funcDesc.bmAttributes & 0x08) != 0),
                         ManifestationTolerant: ((funcDesc.bmAttributes & 0x04) != 0),
-                        CanUpload:             ((funcDesc.bmAttributes & 0x02) != 0),
                         CanDnload:             ((funcDesc.bmAttributes & 0x01) != 0),
                         TransferSize:          funcDesc.wTransferSize,
                         DetachTimeOut:         funcDesc.wDetachTimeOut,
@@ -220,7 +219,6 @@ var device = null;
         let connectButton = document.querySelector("#connect");
         let detachButton = document.querySelector("#detach");
         let downloadButton = document.querySelector("#download");
-        let uploadButton = document.querySelector("#upload");
         let statusDisplay = document.querySelector("#status");
         let infoDisplay = document.querySelector("#usbInfo");
         let dfuDisplay = document.querySelector("#dfuInfo");
@@ -296,13 +294,10 @@ var device = null;
         let transferSize = parseInt(transferSizeField.value);
 
         let dfuseStartAddressField = document.querySelector("#dfuseStartAddress");
-        let dfuseUploadSizeField = document.querySelector("#dfuseUploadSize");
-
         let firmwareFileField = document.querySelector("#firmwareFile");
         let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
-        let uploadLog = document.querySelector("#uploadLog");
 
         let manifestationTolerant = true;
 
@@ -317,7 +312,6 @@ var device = null;
             infoDisplay.textContent = "";
             dfuDisplay.textContent = "";
             detachButton.disabled = true;
-            uploadButton.disabled = true;
             downloadButton.disabled = true;
             firmwareFileField.disabled = true;
         }
@@ -352,7 +346,7 @@ var device = null;
             let memorySummary = "";
             if (desc && Object.keys(desc).length > 0) {
                 device.properties = desc;
-                let info = `WillDetach=${desc.WillDetach}, ManifestationTolerant=${desc.ManifestationTolerant}, CanUpload=${desc.CanUpload}, CanDnload=${desc.CanDnload}, TransferSize=${desc.TransferSize}, DetachTimeOut=${desc.DetachTimeOut}, Version=${hex4(desc.DFUVersion)}`;
+                let info = `WillDetach=${desc.WillDetach}, ManifestationTolerant=${desc.ManifestationTolerant}, CanDnload=${desc.CanDnload}, TransferSize=${desc.TransferSize}, DetachTimeOut=${desc.DetachTimeOut}, Version=${hex4(desc.DFUVersion)}`;
                 dfuDisplay.textContent += "\n" + info;
                 transferSizeField.value = desc.TransferSize;
                 transferSize = desc.TransferSize;
@@ -361,10 +355,6 @@ var device = null;
                 }
 
                 if (device.settings.alternate.interfaceProtocol == 0x02) {
-                    if (!desc.CanUpload) {
-                        uploadButton.disabled = true;
-                        dfuseUploadSizeField.disabled = true;
-                    }
                     if (!desc.CanDnload) {
                         downloadButton.disabled = true;
                     }
@@ -408,7 +398,6 @@ var device = null;
             device.logProgress = logProgress;
 
             // Clear logs
-            clearLog(uploadLog);
             clearLog(downloadLog);
 
             // Display basic USB information
@@ -427,13 +416,11 @@ var device = null;
             if (device.settings.alternate.interfaceProtocol == 0x01) {
                 // Runtime
                 detachButton.disabled = false;
-                uploadButton.disabled = true;
                 downloadButton.disabled = true;
                 firmwareFileField.disabled = true;
             } else {
                 // DFU
                 detachButton.disabled = true;
-                uploadButton.disabled = false;
                 downloadButton.disabled = false;
                 firmwareFileField.disabled = false;
             }
@@ -442,20 +429,16 @@ var device = null;
                 let dfuseFieldsDiv = document.querySelector("#dfuseFields")
                 dfuseFieldsDiv.hidden = false;
                 dfuseStartAddressField.disabled = false;
-                dfuseUploadSizeField.disabled = false;
                 let segment = device.getFirstWritableSegment();
                 if (segment) {
                     device.startAddress = segment.start;
                     dfuseStartAddressField.value = "0x" + segment.start.toString(16);
                     const maxReadSize = device.getMaxReadSize(segment.start);
-                    dfuseUploadSizeField.value = maxReadSize;
-                    dfuseUploadSizeField.max = maxReadSize;
                 }
             } else {
                 let dfuseFieldsDiv = document.querySelector("#dfuseFields")
                 dfuseFieldsDiv.hidden = true;
                 dfuseStartAddressField.disabled = true;
-                dfuseUploadSizeField.disabled = true;
             }
 
             return device;
@@ -517,7 +500,6 @@ var device = null;
                 if (device.getSegment(address) !== null) {
                     device.startAddress = address;
                     field.setCustomValidity("");
-                    dfuseUploadSizeField.max = device.getMaxReadSize(address);
                 } else {
                     field.setCustomValidity("Address outside of memory map");
                 }
@@ -605,46 +587,6 @@ var device = null;
             }
         });
 
-        uploadButton.addEventListener('click', async function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            if (!configForm.checkValidity()) {
-                configForm.reportValidity();
-                return false;
-            }
-
-            if (!device || !device.device_.opened) {
-                onDisconnect();
-                device = null;
-            } else {
-                setLogContext(uploadLog);
-                clearLog(uploadLog);
-                try {
-                    let status = await device.getStatus();
-                    if (status.state == dfu.dfuERROR) {
-                        await device.clearStatus();
-                    }
-                } catch (error) {
-                    device.logWarning("Failed to clear status");
-                }
-
-                let maxSize = Infinity;
-                if (!dfuseUploadSizeField.disabled) {
-                    maxSize = parseInt(dfuseUploadSizeField.value);
-                }
-
-                try {
-                    const blob = await device.do_upload(transferSize, maxSize);
-                    saveAs(blob, "firmware.bin");
-                } catch (error) {
-                    logError(error);
-                }
-
-                setLogContext(null);
-            }
-
-            return false;
-        });
 
         firmwareFileField.addEventListener("change", function() {
             firmwareFile = null;
