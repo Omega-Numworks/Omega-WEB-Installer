@@ -2,22 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>WebUSB DFU for NumWorks</title>
-    <style>
-      p.warning {
-        color: red;
-      }
-      p.error {
-        color: red;
-        font-weight: bold;
-      }
-      label.radio {
-        display: inline;
-      }
-      input:invalid {
-        color:red;
-      }
-    </style>
+    <title>Omega updater for numworks</title>
   </head>
   <body>
     <br/>
@@ -25,7 +10,7 @@
       Choose your NumWorks model:<br/><a href="n0100/index.html"><b>N0100</b></a> or <a href="n0110/index.html"><b>N0110</b></a>.
     </p>
     <br/>
-    <footer>
+    <div class="jumbotron">
       <hr>
       <p>WebUSB is currently only supported by Chromium / Google Chrome.</p>
       <p>For Chrome to communicate with a USB device, it must have permission to access the device and the operating system must be able to load a generic driver that libusb can talk to.</p>
@@ -36,6 +21,6 @@
           <li>On macOS and ChromeBooks, it should work directly.</li>
         </ul>
       </p>
-    </footer>
+    </div>
   </body>
 </html>
