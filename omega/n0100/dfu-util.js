@@ -90,7 +90,7 @@ var device = null;
     }
 
     function populateInterfaceList(form, device_, interfaces) {
-        let old_choices = Array.from(form.getElementsByTagName("div"));
+        /*let old_choices = Array.from(form.getElementsByTagName("div"));
         for (let radio_div of old_choices) {
             form.removeChild(radio_div);
         }
@@ -114,7 +114,7 @@ var device = null;
             div.appendChild(radio);
             div.appendChild(label);
             form.insertBefore(div, button);
-        }
+        }*/
     }
 
     function getDFUDescriptorProperties(device) {
