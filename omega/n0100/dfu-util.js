@@ -216,7 +216,7 @@ var device = null;
     }
 
     document.addEventListener('DOMContentLoaded', event => {
-        let oReq = new XMLHttpRequest();
+        
         let connectButton = document.querySelector("#connect");
         let detachButton = document.querySelector("#detach");
         let downloadButton = document.querySelector("#download");
@@ -230,7 +230,6 @@ var device = null;
         let nowebusb = document.querySelector("#nowebusb");
         let nodevicedetected = document.querySelector("#nodevicedetected");
         let ondisconnected = document.querySelector("#ondisconnected");
-
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -298,6 +297,7 @@ var device = null;
         let transferSize = parseInt(transferSizeField.value);
 
         let dfuseStartAddressField = document.querySelector("#dfuseStartAddress");
+        let firmwareFileField = document.querySelector("#firmwareFile");
         let firmwareFile = null;
 
         let downloadLog = document.querySelector("#downloadLog");
