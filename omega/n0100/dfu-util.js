@@ -605,14 +605,14 @@ var device = null;
                 };
                 reader.readAsArrayBuffer(file);
             }
-            firmwareFile = null;
-            var oReq = new XMLHttpRequest();
+            //firmwareFile = null;
+            /*var oReq = new XMLHttpRequest();
             oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
             oReq.onload = (oEvent) => {
                 firmwareFile = oReq.response;
             }
-            oReq.send(null);
+            oReq.send(null);*/
         });
 
         downloadButton.addEventListener('click', async function(event) {
