@@ -230,7 +230,6 @@ var device = null;
         let nowebusb = document.querySelector("#nowebusb");
         let nodevicedetected = document.querySelector("#nodevicedetected");
         let ondisconnected = document.querySelector("#ondisconnected");
-        let latestversion = document.querySelector("#latestversion");
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -608,20 +607,11 @@ var device = null;
             }
         });
 
-        latestversion.addEventListener('click', async () => {
-            /*var oReq = new XMLHttpRequest();
-            oReq.open("GET", "omega1.8.bin", true);
-            oReq.responseType = "arraybuffer";
-
-            oReq.onload = function (oEvent) {
-                firmwareFile = oReq.response;
-            }
-            oReq.send(null);
-            console.log(firmwareFile)
-            */
-        })
-
         downloadButton.addEventListener('click', async function(event) {
+            function ab2str(buf) {
+                return String.fromCharCode.apply(null, new Uint16Array(buf));
+              }
+              ab2str(firmwareFile);
             event.preventDefault();
             event.stopPropagation();
             if (!configForm.checkValidity()) {
