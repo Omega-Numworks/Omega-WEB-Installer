@@ -1,4 +1,4 @@
-# [Omega installer for Numworks!](https://omega-numworks.github.io/updater/omega/n0100)
+# Omega installer for Numworks!
 
 [Link](https://omega-numworks.github.io/updater/omega/n0100)
 
