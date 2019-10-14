@@ -1,5 +1,9 @@
-# RedGl0w.github.io
+# [Omega installer for Numworks!](https://omega-numworks.github.io/updater/omega/n0100)
 
-TO DO:
-- Add nighlty build
-- Compil different version of omega
+[Link](https://omega-numworks.github.io/updater/omega/n0100)
+
+## Requirements
+* Google Chrome/Chromium
+* The Numworks driver
+
+<!--## Credits-->
