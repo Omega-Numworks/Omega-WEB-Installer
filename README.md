@@ -13,3 +13,10 @@
 * The Numworks driver
 
 <!--## Credits-->
+
+## Credits
+
+This project is a fork from:
+
+* [TI-Planet/webdfu_numworks](https://github.com/TI-Planet/webdfu_numworks)
+* [devanlai/webdfu](https://github.com/devanlai/webdfu)
