@@ -5,7 +5,7 @@
   <a href="https://github.com/Omega-Numworks/Omega-WEB-Installer/issues"><img alt="Issues" src="https://img.shields.io/github/issues/Omega-Numworks/Omega-WEB-Installer.svg?logo=git&style=for-the-badge" /></a>
 </p>
 
-[Link (for n0100)](https://omega-numworks.github.io/Online-Installer/n0100) `BETA`
+[Link (for n0100)](https://omega-numworks.github.io/Omega-WEB-Installer/n0100) `BETA`
 
 ## Requirements
 
