@@ -232,7 +232,8 @@ var device = null;
         let nodevicedetected = document.querySelector("#nodevicedetected");
         let ondisconnected = document.querySelector("#ondisconnected");
 
-        let omega = document.querySelector("#omega");
+        let omegamanualbuild = document.querySelector("#omegamanualbuild");
+        let omeganightly = document.querySelector("#omeganightly")
 
         let searchParams = new URLSearchParams(window.location.search);
         let doAutoConnect = false;
@@ -321,7 +322,7 @@ var device = null;
             detachButton.disabled = true;
             downloadButton.disabled = true;
             firmwareFileField.disabled = true;
-            omega.disabled = true;
+            omegamanualbuild.disabled = true;
         }
 
         function onUnexpectedDisconnect(event) {
@@ -427,13 +428,13 @@ var device = null;
                 detachButton.disabled = false;
                 downloadButton.disabled = true;
                 firmwareFileField.disabled = true;
-                omega.disabled = true;
+                omegamanualbuild.disabled = true;
             } else {
                 // DFU
                 detachButton.disabled = true;
                 downloadButton.disabled = false;
                 firmwareFileField.disabled = false;
-                omega.disabled = false;
+                omegamanualbuild.disabled = false;
             }
 
             if (device.memoryInfo) {
@@ -613,12 +614,26 @@ var device = null;
             }
         });
 
-        omega.addEventListener("click", () => {
+        omeganightly.addEventListener("click", () => {
+            var invocation = new XMLHttpRequest();
+            let url = "https://gitlab.com/joachim2lefournis/Omega/-/jobs/artifacts/omega-master/raw/output/release/device/n0100/epsilon.bin?job=job:build";
+            if(invocation){
+                invocation.open('GET', url, true);
+                invocation.onreadystatechange = () => {
+                    console.log(invocation)
+                }
+                invocation.send()
+            }
+        })
+
+        omegamanualbuild.addEventListener("click", () => {
             var oReq = new XMLHttpRequest();
             oReq.open("GET", "omega1.8.bin", true);
             oReq.responseType = "arraybuffer";
             oReq.onload = (oEvent) => {
+                console.log(oReq.status)
                 firmwareFile = oReq.response;
+                console.log("omegamanualbuild loaded")
             }
             oReq.send(null);
         })

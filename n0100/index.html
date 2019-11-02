@@ -71,7 +71,8 @@
             <p margin="5px;">Choose your firmware:</p>
             <p>
               <input type="file" class="btn btn-primary" id="firmwareFile" name="file" accept=".bin" />
-              <a href="#" class="btn btn-primary" id="omega">use Omega 1.8</a>
+              <a href="#" class="btn btn-primary" id="omegamanualbuild">use Omega 1.8</a>
+              <a href="#" class="btn btn-primary" id="omeganightly">use latest omega</a>
             </p>
             <p margin="5px;">And finally:</p>
             <p>
@@ -82,8 +83,13 @@
         </fieldset>
       </form>
     </fieldset>
-    <div class="alert alert-dark" style="bottom:0" role="alert">
-      This Omega installer is based on <a href="https://ti-planet.github.io/webdfu_numworks/" class="alert-link">Numworks DFU</a>
+    <div style="bottom:0; position: fixed; text-align: center; width: 100%">
+      <div class="alert alert-danger" role="alert" style="display: none;">
+        The latest version of Omega is probably being build. Please retry in a few minutes....
+      </div>
+      <div class="alert alert-dark" role="alert">
+        This Omega installer is based on <a href="https://ti-planet.github.io/webdfu_numworks/" class="alert-link">Numworks DFU</a>
+      </div>
     </div>
   </body>
 </html>
