@@ -20,3 +20,7 @@ This project is a fork from:
 
 * [TI-Planet/webdfu_numworks](https://github.com/TI-Planet/webdfu_numworks)
 * [devanlai/webdfu](https://github.com/devanlai/webdfu)
+
+## License
+
+Omega-WEB-Installer is released under a [CC BY-NC-SA License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). NumWorks is a registered trademark.
